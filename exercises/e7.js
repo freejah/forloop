@@ -5,7 +5,22 @@
 
 export function getClientWithLeastBalance(array) {
   // Your code goes here...
+  let lowestNonZeroBalanceAccount = null;
 
+  for (let i = 0; i < array.length; i++) {
+    const currentAccount = array[i];
+
+    if (currentAccount.balance !== 0) {
+      if (lowestNonZeroBalanceAccount === null ||
+          currentAccount.balance < lowestNonZeroBalanceAccount.balance) {
+        lowestNonZeroBalanceAccount = currentAccount;
+      }
+    }
+  }
+
+  const resultArray = lowestNonZeroBalanceAccount === null ? [] : [lowestNonZeroBalanceAccount];
+
+  return resultArray
 }
 
 // === TEST YOURSELF ===

@@ -6,6 +6,19 @@
 
 export function getClientsWithBalanceOverOneHundred(array) {
   // Your code goes here...
+// Sample bank account objects
+
+  const balanceOver = [];
+
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
+
+    if(account.balance >= 100.0){
+      balanceOver.push(account);
+    }
+  }
+
+  return balanceOver;
 
 }
 
