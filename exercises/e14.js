@@ -7,46 +7,25 @@
 
 export function getClientsWithWrongBalance(array) {
   // Your code goes here...
-    const depositSums = [];
-    const withdrawalSums = [];
-    const netBalances = [];
-  
-    for (let i = 0; i < array.length; i++) {
-      const account = array[i];
-      const deposits = account.deposits || [];
-      const withdrawals = account.withdrawals || [];
-  
-      let depositSum = 0;
-      let withdrawalSum = 0;
-  
-      for (let j = 0; j < deposits.length; j++) {
-        depositSum += deposits[j];
-      }
-  
-      for (let k = 0; k < withdrawals.length; k++) {
-        withdrawalSum += withdrawals[k];
-      }
-  
-      depositSums.push(depositSum);
-      withdrawalSums.push(withdrawalSum);
-  
-      const netBalance = depositSum - withdrawalSum;
-      netBalances.push(netBalance);
-    }
-  
-    const accountsWithWrongBalance = [];
-    for (let i = 0; i < array.length; i++) {
-      const account = array[i];
-      const balance = account.balance;
-      const netBalance = netBalances[i];
-  
-      if (netBalance !== balance) {
-        accountsWithWrongBalance.push(account);
+  let wrongBalance = [];
+  for (let user of array){
+    let depositBalance = 0;
+    let withdrawalBalance = 0;
+    if ( user.deposits){
+      for (let deposit of user.deposits){
+        depositBalance += +deposit;
       }
     }
-  
-    return accountsWithWrongBalance;
-  
+    if ( user.withdrawals){
+      for (let withdrawals of user.withdrawals){
+        withdrawalBalance += +withdrawals;
+      }
+    }
+    if (depositBalance - withdrawalBalance !== user.balance){
+      wrongBalance.push(user);
+    }
+  }  
+  return wrongBalance
 }
 
 

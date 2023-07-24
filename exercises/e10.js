@@ -12,10 +12,10 @@ export function getClientsWithLetterInName(array, letter) {
     const name = array[i].name;
 
     if (name.toLowerCase().includes(letter.toLowerCase())) {
-      filteredNames.push(name)
+      filteredNames.push(name);
     }
   }
-  return filteredNames
+  return filteredNames;
 }
 
 // === TEST YOURSELF ===

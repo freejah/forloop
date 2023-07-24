@@ -13,9 +13,8 @@ export function getClientWithGreatestBalance(array) {
       maxAccount = array[i];
     }
   }
-  const resultArray = maxAccount;
 
-  return [resultArray]
+  return [maxAccount];
 }
 
 
